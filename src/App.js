@@ -1,16 +1,16 @@
   
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import NavBar from './components/NavBar';
 import TextForm from './components/TextForm';
 import React, {useState}  from 'react';
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -29,9 +29,9 @@ function App() {
     const toggleMode = () => {
       if(mode === "light"){
         setMode("dark");
-        document.body.style.background= "#d90429";
+        document.body.style.background= "#003566";
         showsetAlert("Dark mode has been enabled", "sucess");
-        document.title = "Textutils - Dark Mode";
+        // document.title = "Textutils - Dark Mode";
         // setInterval(() => {
         //   document.title = "Textutils is Amazing";
         // }, 2000);
@@ -43,7 +43,7 @@ function App() {
         setMode("light");
         document.body.style.background= "white";
         showsetAlert("Light mode has been enabled", "sucess");
-        document.title = "Textutils - Light Mode";
+        // document.title = "Textutils - Light Mode";
   
       }
     }
@@ -59,20 +59,21 @@ function App() {
     // }
     return (
       <> 
-    {/* <Router> */}
+    <Router>
       <NavBar title="TextUtiles " mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <div className="container my-3">
-          {/* <Switch>
-            <Route excat path="/about"> */}
-                {/* <About /> */}
-            {/* </Route> */}
-            {/* <Route excat path="/" */}
-                <TextForm heading="Enter the text to analyze below" showAlert={showsetAlert} mode={mode} />
-              {/* </Route> */}
-            {/* </Switch> */}
+          <Switch>
+            <Route exact path="/about"> 
+                { <About mode={mode} /> }
+             </Route>
+            <Route exact path="/">
+                <TextForm heading=" Try Textutils - Word Counter, Character Counter, Remove Extra Spaces" showAlert={showsetAlert} mode={mode}/> 
+            </Route>
+              
+            </Switch>
       </div>
-    {/* </Router> */}
+    </Router>
   
   
       </>
